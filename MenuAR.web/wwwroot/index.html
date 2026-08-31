@@ -5,102 +5,69 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>MenuAR | WebAR Demo</title>
+    <title>MenuAR | SANTO BURGER</title>
 
     <link rel="stylesheet" href="/css/style.css">
-
-    <!-- A-Frame -->
-    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
-
-    <!-- Meshopt decoder -->
-    <script src="/js/meshopt_decoder.js"></script>
-
-    <!-- MindAR -->
-    <script src="/js/mindar-image-aframe.prod.js"></script>
 </head>
 
 <body>
 
-    <main>
+    <main class="menu-page">
 
-        <h1>MenuAR</h1>
+        <header class="menu-header">
+            <p class="brand">MENUAR</p>
 
-        <p>Interactive WebAR Restaurant Menu</p>
+            <h1>SANTO BURGER</h1>
 
-        <section>
-
-            <h2>SANTO BURGER</h2>
-
-            <p>
-                Point your camera at the menu target.
+            <p class="tagline">
+                Experience your food before you order it.
             </p>
-
-            <div class="model-viewer">
-
-                <a-scene embedded
-                         mindar-image="
-                        imageTargetSrc: /assets/targets/menu-target.mind;
-                        autoStart: true;
-                        uiScanning: true;
-                        uiLoading: true;
-                    "
-                         renderer="
-                        colorManagement: true;
-                        physicallyCorrectLights: true;
-                    "
-                         vr-mode-ui="enabled: false"
-                         device-orientation-permission-ui="enabled: false">
-
-                    <a-assets>
-
-                        <a-asset-item id="santoBurgerModel"
-                                      src="/assets/models/SantoBurger_AR_meshopt_v01.glb">
-                        </a-asset-item>
-
-                    </a-assets>
+        </header>
 
 
-                    <!--
-                        MindAR target
+        <section class="menu-item">
 
-                        Everything inside this entity
-                        will be attached to target #0.
-                    -->
+            <div class="menu-item-image">
+                <img src="/assets/images/santo-burger.jpg"
+                     alt="Santo Burger">
+            </div>
 
-                    <a-entity mindar-image-target="targetIndex: 0">
+            <div class="menu-item-content">
 
-                        <a-entity gltf-model="#santoBurgerModel"
-                                  position="0 0 0.1"
-                                  rotation="0 0 0"
-                                  scale="0.5 0.5 0.5">
-                        </a-entity>
+                <p class="category">
+                    SIGNATURE BURGER
+                </p>
 
-                    </a-entity>
+                <h2>
+                    La Bomba de Queso
+                </h2>
 
+                <p class="description">
+                    A premium burger built around a rich
+                    cheddar cheese crust, bacon jam and
+                    fresh ingredients.
+                </p>
 
-                    <a-camera position="0 0 0"
-                              look-controls="enabled: false">
-                    </a-camera>
+                <div class="menu-item-footer">
 
+                    <span class="price">
+                        $12.99
+                    </span>
 
-                    <a-light type="ambient"
-                             intensity="1.5">
-                    </a-light>
+                    <a class="ar-button"
+                       href="/ar.html">
 
-                    <a-light type="directional"
-                             position="2 4 3"
-                             intensity="2">
-                    </a-light>
+                        VIEW IN AR
 
-                </a-scene>
+                    </a>
+
+                </div>
 
             </div>
 
         </section>
 
     </main>
-
-    <script src="/js/app.js"></script>
 
 </body>
 </html>
