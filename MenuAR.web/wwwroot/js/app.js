@@ -2,11 +2,13 @@
 
 window.addEventListener("load", () => {
 
-    console.log("A-Frame loaded:", typeof AFRAME);
-    console.log("THREE available:", typeof THREE);
-    console.log("MeshoptDecoder available:", typeof MeshoptDecoder);
-    console.log("THREE.GLTFLoader:", THREE.GLTFLoader);
+    console.log("A-Frame:", typeof AFRAME);
+    console.log("THREE:", typeof THREE);
+    console.log("MeshoptDecoder:", typeof MeshoptDecoder);
 
+    /*
+     * Connect Meshopt to the GLTFLoader used by A-Frame.
+     */
     if (
         typeof THREE !== "undefined" &&
         typeof THREE.GLTFLoader !== "undefined" &&
@@ -38,8 +40,34 @@ window.addEventListener("load", () => {
     } else {
 
         console.error(
-            "Meshopt could not be connected because a required component is missing."
+            "Meshopt could not be connected to GLTFLoader."
         );
+
+    }
+
+
+    /*
+     * MindAR status
+     */
+    const scene = document.querySelector("a-scene");
+
+    if (scene) {
+
+        scene.addEventListener("arReady", () => {
+            console.log("MindAR: AR system ready.");
+        });
+
+        scene.addEventListener("targetFound", () => {
+            console.log("MindAR: image target found.");
+        });
+
+        scene.addEventListener("targetLost", () => {
+            console.log("MindAR: image target lost.");
+        });
+
+        scene.addEventListener("arError", (event) => {
+            console.error("MindAR: AR error.", event);
+        });
 
     }
 

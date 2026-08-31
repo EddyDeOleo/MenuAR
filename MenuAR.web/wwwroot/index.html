@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>MenuAR | SANTO BURGER</title>
+    <title>MenuAR | WebAR Demo</title>
 
     <link rel="stylesheet" href="/css/style.css">
 
@@ -13,26 +14,40 @@
 
     <!-- Meshopt decoder -->
     <script src="/js/meshopt_decoder.js"></script>
+
+    <!-- MindAR -->
+    <script src="/js/mindar-image-aframe.prod.js"></script>
 </head>
 
 <body>
 
     <main>
+
         <h1>MenuAR</h1>
 
         <p>Interactive WebAR Restaurant Menu</p>
 
         <section>
+
             <h2>SANTO BURGER</h2>
 
             <p>
-                Experience the menu in augmented reality.
+                Point your camera at the menu target.
             </p>
 
             <div class="model-viewer">
 
                 <a-scene embedded
-                         renderer="colorManagement: true; physicallyCorrectLights: true"
+                         mindar-image="
+                        imageTargetSrc: /assets/targets/menu-target.mind;
+                        autoStart: true;
+                        uiScanning: true;
+                        uiLoading: true;
+                    "
+                         renderer="
+                        colorManagement: true;
+                        physicallyCorrectLights: true;
+                    "
                          vr-mode-ui="enabled: false"
                          device-orientation-permission-ui="enabled: false">
 
@@ -44,15 +59,29 @@
 
                     </a-assets>
 
-                    <a-entity gltf-model="#santoBurgerModel"
-                              position="0 0 -3"
-                              scale="1 1 1"
-                              rotation="0 0 0">
+
+                    <!--
+                        MindAR target
+
+                        Everything inside this entity
+                        will be attached to target #0.
+                    -->
+
+                    <a-entity mindar-image-target="targetIndex: 0">
+
+                        <a-entity gltf-model="#santoBurgerModel"
+                                  position="0 0 0.1"
+                                  rotation="0 0 0"
+                                  scale="0.5 0.5 0.5">
+                        </a-entity>
+
                     </a-entity>
 
+
                     <a-camera position="0 0 0"
-                              look-controls="enabled: true">
+                              look-controls="enabled: false">
                     </a-camera>
+
 
                     <a-light type="ambient"
                              intensity="1.5">
@@ -66,7 +95,9 @@
                 </a-scene>
 
             </div>
+
         </section>
+
     </main>
 
     <script src="/js/app.js"></script>
