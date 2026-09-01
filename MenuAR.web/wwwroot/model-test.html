@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MenuAR | Model Viewer Test</title>
+
+    <script>
+        self.ModelViewerElement = self.ModelViewerElement || {};
+        self.ModelViewerElement.meshoptDecoderLocation =
+            'https://cdn.jsdelivr.net/npm/meshoptimizer@0.23.0/meshopt_decoder.js';
+    </script>
+
+    <script type="module"
+            src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 24px;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 70vh;
+            background: #222;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+
+        <h1>MenuAR</h1>
+
+        <p>Model Viewer Test</p>
+
+        <model-viewer src="/assets/models/SantoBurger_AR_meshopt_v01.glb"
+                      ar
+                      ar-modes="scene-viewer quick-look webxr"
+                      camera-controls
+                      shadow-intensity="1"
+                      alt="Santo Burger Cheese Bomb">
+
+            <button slot="ar-button"
+                    style="
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        ">
+                VIEW IN AR
+            </button>
+
+        </model-viewer>
+
+    </main>
+
+</body>
+</html>
