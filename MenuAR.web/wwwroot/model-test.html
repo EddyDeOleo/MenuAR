@@ -2,21 +2,22 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MenuAR | Santo Burger</title>
 
-    <link rel="stylesheet"
-          href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script>
+        self.ModelViewerElement = self.ModelViewerElement || {};
+
+        self.ModelViewerElement.meshoptDecoderLocation =
+            "/js/meshopt_decoder.js";
+    </script>
 
     <script type="module"
             src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
     </script>
-
 </head>
 
 
@@ -80,7 +81,7 @@
             <div class="product-viewer">
 
                 <model-viewer id="cheeseBombViewer"
-                              src="/assets/models/SantoBurger_test_uncompressed.glb"
+                              src="/assets/models/SantoBurger_meshopt_test.glb"
                               alt="3D model of the Cheese Bomb burger"
                               ar
                               ar-modes="scene-viewer quick-look webxr"
