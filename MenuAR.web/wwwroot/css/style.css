@@ -2,39 +2,277 @@
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    background: #121212;
-    color: #f5f5f0;
+    padding: 0;
+    min-height: 100%;
 }
 
-main {
+body {
+    background: #000000;
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   MENU PAGE
+   ========================================= */
+
+.menu-page {
+    width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    padding: 48px 24px;
+    padding: 24px 20px 60px;
 }
 
-h1 {
-    font-size: 3rem;
-    margin-bottom: 8px;
+
+/* =========================================
+   RESTAURANT HEADER
+   ========================================= */
+
+.restaurant-header {
+    text-align: center;
+    margin-bottom: 28px;
 }
 
-h2 {
-    margin-top: 48px;
-}
-
-.model-viewer {
-    width: 100%;
-    height: 500px;
-    margin-top: 32px;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #1a1a1a;
-}
-
-    .model-viewer a-scene {
-        width: 100%;
-        height: 100%;
+    .restaurant-header h1 {
+        margin: 0;
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
     }
+
+
+/* =========================================
+   CATEGORY BAR
+   ========================================= */
+
+.category-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 42px;
+    background: #FFFFFF;
+    color: #000000;
+    padding: 14px 20px;
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   PRODUCT CARD
+   ========================================= */
+
+.menu-card {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    color: #000000;
+}
+
+
+/* =========================================
+   PRODUCT HEADER
+   ========================================= */
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 26px 24px 0;
+}
+
+.product-info {
+    flex: 1;
+}
+
+    .product-info h2 {
+        margin: 0 0 8px;
+        font-size: 1.8rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+    }
+
+.product-description {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.product-price {
+    margin-left: 24px;
+    font-size: 2rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   3D MODEL AREA
+   ========================================= */
+
+.product-viewer {
+    width: 100%;
+    /*
+       IMPORTANT:
+       Height is automatic so the white
+       product card can contain both the
+       3D model and the AR button.
+    */
+
+    height: auto;
+    padding: 24px 24px 36px;
+    overflow: visible;
+}
+
+
+/* =========================================
+   MODEL-VIEWER
+   ========================================= */
+
+model-viewer {
+    display: block;
+    width: 100%;
+    height: 420px;
+    background: #F5F5F5;
+    /*
+       Hide model-viewer's own AR button.
+       We use our custom button below.
+    */
+
+    --ar-button-display: none;
+}
+
+
+/* =========================================
+   CUSTOM AR BUTTON
+   ========================================= */
+
+.ar-button {
+    display: block;
+    width: calc(100% - 48px);
+    max-width: 420px;
+    height: 52px;
+    margin: 20px auto 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: #000000;
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+}
+
+    .ar-button:hover {
+        background: #111111;
+    }
+
+    .ar-button:active {
+        transform: scale(0.98);
+    }
+
+    .ar-button[hidden] {
+        display: none;
+    }
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    /* MENU PAGE */
+
+    .menu-page {
+        padding: 20px 12px 50px;
+    }
+
+
+    /* RESTAURANT HEADER */
+
+    .restaurant-header {
+        margin-bottom: 20px;
+    }
+
+        .restaurant-header h1 {
+            font-size: 1.6rem;
+        }
+
+
+    /* CATEGORY BAR */
+
+    .category-bar {
+        gap: 22px;
+        padding: 12px 10px;
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+    }
+
+
+    /* PRODUCT CARD */
+
+    .menu-card {
+        width: 100%;
+    }
+
+
+    /* PRODUCT HEADER */
+
+    .product-header {
+        padding: 20px 20px 0;
+    }
+
+    .product-info h2 {
+        font-size: 1.45rem;
+    }
+
+    .product-description {
+        font-size: 0.9rem;
+    }
+
+    .product-price {
+        font-size: 1.6rem;
+        margin-left: 12px;
+    }
+
+
+    /* 3D MODEL AREA */
+
+    .product-viewer {
+        /*
+           No fixed height here.
+           The card grows naturally to
+           contain the model + AR button.
+        */
+
+        height: auto;
+        padding: 20px 20px 30px;
+        overflow: visible;
+    }
+
+
+    /* MODEL */
+
+    model-viewer {
+        width: 100%;
+        height: 360px;
+    }
+
+
+    /* AR BUTTON */
+
+    .ar-button {
+        width: calc(100% - 40px);
+        height: 50px;
+        margin: 20px auto 0;
+    }
+}

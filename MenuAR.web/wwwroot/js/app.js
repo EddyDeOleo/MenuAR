@@ -1,74 +1,75 @@
 ﻿console.log("MenuAR application initialized.");
 
-window.addEventListener("load", () => {
+const modelViewer = document.querySelector("#cheeseBombViewer");
+const arButton = document.querySelector("#arButton");
 
-    console.log("A-Frame:", typeof AFRAME);
-    console.log("THREE:", typeof THREE);
-    console.log("MeshoptDecoder:", typeof MeshoptDecoder);
+
+if (modelViewer && arButton) {
 
     /*
-     * Connect Meshopt to the GLTFLoader used by A-Frame.
-     */
-    if (
-        typeof THREE !== "undefined" &&
-        typeof THREE.GLTFLoader !== "undefined" &&
-        typeof MeshoptDecoder !== "undefined"
-    ) {
+       AR button is hidden by default.
+    */
 
-        const originalLoad = THREE.GLTFLoader.prototype.load;
+    arButton.hidden = true;
 
-        THREE.GLTFLoader.prototype.load = function (
-            url,
-            onLoad,
-            onProgress,
-            onError
-        ) {
 
-            this.setMeshoptDecoder(MeshoptDecoder);
+    /*
+       Wait until the 3D model has loaded.
+    */
 
-            return originalLoad.call(
-                this,
-                url,
-                onLoad,
-                onProgress,
-                onError
+    modelViewer.addEventListener("load", () => {
+
+        console.log("MenuAR: 3D model loaded.");
+
+
+        /*
+           Check whether AR can be activated
+           on this device.
+        */
+
+        if (modelViewer.canActivateAR) {
+
+            arButton.hidden = false;
+
+            console.log(
+                "MenuAR: AR is available on this device."
             );
-        };
 
-        console.log("MeshoptDecoder connected to GLTFLoader.");
+        } else {
 
-    } else {
+            arButton.hidden = true;
 
-        console.error(
-            "Meshopt could not be connected to GLTFLoader."
-        );
+            console.log(
+                "MenuAR: AR is not available on this device."
+            );
 
-    }
+        }
+
+    });
 
 
     /*
-     * MindAR status
-     */
-    const scene = document.querySelector("a-scene");
+       Custom AR button.
+    */
 
-    if (scene) {
+    arButton.addEventListener("click", async () => {
 
-        scene.addEventListener("arReady", () => {
-            console.log("MindAR: AR system ready.");
-        });
+        console.log("MenuAR: Starting AR...");
 
-        scene.addEventListener("targetFound", () => {
-            console.log("MindAR: image target found.");
-        });
 
-        scene.addEventListener("targetLost", () => {
-            console.log("MindAR: image target lost.");
-        });
+        try {
 
-        scene.addEventListener("arError", (event) => {
-            console.error("MindAR: AR error.", event);
-        });
+            await modelViewer.activateAR();
 
-    }
+        } catch (error) {
 
-});
+            console.error(
+                "MenuAR: Unable to start AR.",
+                error
+            );
+
+        }
+
+    });
+
+}

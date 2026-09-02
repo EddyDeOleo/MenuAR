@@ -1,77 +1,119 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MenuAR | Model Viewer Test</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <script>
-        self.ModelViewerElement = self.ModelViewerElement || {};
-        self.ModelViewerElement.meshoptDecoderLocation =
-            'https://cdn.jsdelivr.net/npm/meshoptimizer@0.23.0/meshopt_decoder.js';
-    </script>
+    <title>MenuAR | Santo Burger</title>
+
+    <link rel="stylesheet"
+          href="/css/style.css">
 
     <script type="module"
-            src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+            src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
     </script>
 
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: #111;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-
-        main {
-            max-width: 900px;
-            margin: auto;
-            padding: 24px;
-        }
-
-        model-viewer {
-            width: 100%;
-            height: 70vh;
-            background: #222;
-        }
-    </style>
 </head>
+
 
 <body>
 
-    <main>
+    <main class="menu-page">
 
-        <h1>MenuAR</h1>
 
-        <p>Model Viewer Test</p>
+        <!-- RESTAURANT HEADER -->
 
-        <model-viewer src="/assets/models/SantoBurger_AR_meshopt_v01.glb"
-                      ar
-                      ar-modes="scene-viewer quick-look webxr"
-                      camera-controls
-                      shadow-intensity="1"
-                      alt="Santo Burger Cheese Bomb">
+        <header class="restaurant-header">
 
-            <button slot="ar-button"
-                    style="
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 14px 24px;
-            font-size: 16px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-        ">
-                VIEW IN AR
-            </button>
+            <h1>SANTO BURGER</h1>
 
-        </model-viewer>
+        </header>
+
+
+        <!-- CATEGORY BAR -->
+
+        <nav class="category-bar">
+
+            <span>BURGERS</span>
+
+            <span>SALADS</span>
+
+            <span>ENTRIES</span>
+
+        </nav>
+
+
+        <!-- PRODUCT CARD -->
+
+        <section class="menu-card">
+
+
+            <!-- PRODUCT INFORMATION -->
+
+            <div class="product-header">
+
+                <div class="product-info">
+
+                    <h2>CHEESE BOMB</h2>
+
+                    <p class="product-description">
+                        Premium burger
+                        (cheddar cheese crust, bacon jam)
+                    </p>
+
+                </div>
+
+
+                <span class="product-price">
+                    $5.00
+                </span>
+
+            </div>
+
+
+            <!-- 3D MODEL -->
+
+            <div class="product-viewer">
+
+                <model-viewer id="cheeseBombViewer"
+                              src="/assets/models/SantoBurger_test_uncompressed.glb"
+                              alt="3D model of the Cheese Bomb burger"
+                              ar
+                              ar-modes="scene-viewer quick-look webxr"
+                              ar-placement="floor"
+                              camera-controls
+                              shadow-intensity="1"
+                              exposure="1"
+                              interaction-prompt="auto">
+                </model-viewer>
+
+
+                <!-- CUSTOM AR BUTTON -->
+
+                <button id="arButton"
+                        class="ar-button"
+                        type="button"
+                        hidden>
+
+                    VIEW IN AR
+
+                </button>
+
+            </div>
+
+
+        </section>
+
 
     </main>
 
+
+    <script src="/js/app.js"></script>
+
 </body>
+
 </html>
