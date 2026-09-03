@@ -1,73 +1,70 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MenuAR | SANTO BURGER</title>
+    <title>MenuAR | Santo Burger</title>
 
     <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Meshopt decoder configuration -->
+    <script>
+        self.ModelViewerElement = self.ModelViewerElement || {};
+
+        self.ModelViewerElement.meshoptDecoderLocation =
+            "/js/meshopt_decoder.js";
+    </script>
+
+    <!-- Google model-viewer -->
+    <script type="module"
+            src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+    </script>
 </head>
 
 <body>
 
     <main class="menu-page">
 
-        <header class="menu-header">
-            <p class="brand">MENUAR</p>
+        <!-- RESTAURANT HEADER -->
+        <header class="restaurant-header">
 
             <h1>SANTO BURGER</h1>
 
-            <p class="tagline">
-                Experience your food before you order it.
-            </p>
         </header>
 
 
-        <section class="menu-item">
+        <!-- CATEGORY NAVIGATION -->
+        <nav class="category-bar">
 
-            <div class="menu-item-image">
-                <img src="/assets/images/santo-burger.jpg"
-                     alt="Santo Burger">
-            </div>
+            <a href="/menu">MENU</a>
 
-            <div class="menu-item-content">
+            <a href="/menu/burgers">BURGERS</a>
 
-                <p class="category">
-                    SIGNATURE BURGER
-                </p>
+            <a href="/menu/salads">SALADS</a>
 
-                <h2>
-                    La Bomba de Queso
-                </h2>
+            <a href="/menu/entries">ENTRIES</a>
 
-                <p class="description">
-                    A premium burger built around a rich
-                    cheddar cheese crust, bacon jam and
-                    fresh ingredients.
-                </p>
+        </nav>
 
-                <div class="menu-item-footer">
 
-                    <span class="price">
-                        $12.99
-                    </span>
+        <!-- MENU -->
+        <main id="menuContainer" class="menu-container">
 
-                    <a class="ar-button"
-                       href="/ar.html">
+            <!--
+                Product categories and product cards
+                will be generated here by app.js.
+            -->
 
-                        VIEW IN AR
+        </main>
 
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
 
     </main>
 
+
+    <script src="/js/app.js"></script>
+
 </body>
+
 </html>

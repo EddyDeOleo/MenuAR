@@ -1,0 +1,31 @@
+﻿{
+  "products": [
+    {
+      "id": "cheese-bomb",
+      "category": "burgers",
+      "name": "CHEESE BOMB",
+      "description": "Premium burger (cheddar cheese crust, bacon jam)",
+      "price": "$5.00",
+      "modelUrl": "/assets/models/SantoBurger_meshopt_test.glb",
+      "arEnabled": true
+    },
+    {
+      "id": "santo-classic",
+      "category": "burgers",
+      "name": "SANTO CLASSIC",
+      "description": "Classic burger with lettuce, tomato and special sauce",
+      "price": "$4.50",
+      "modelUrl": "/assets/models/SantoBurger_meshopt_test.glb",
+      "arEnabled": true
+    },
+    {
+      "id": "test-salad",
+      "category": "salads",
+      "name": "TEST SALAD",
+      "description": "Temporary salad product for category testing",
+      "price": "$6.00",
+      "modelUrl": "/assets/models/SantoBurger_meshopt_test.glb",
+      "arEnabled": true
+    }
+  ]
+}
