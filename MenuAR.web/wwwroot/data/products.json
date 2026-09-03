@@ -17,15 +17,6 @@
       "price": "$4.50",
       "modelUrl": "/assets/models/SantoBurger_meshopt_test.glb",
       "arEnabled": true
-    },
-    {
-      "id": "test-salad",
-      "category": "salads",
-      "name": "TEST SALAD",
-      "description": "Temporary salad product for category testing",
-      "price": "$6.00",
-      "modelUrl": "/assets/models/SantoBurger_meshopt_test.glb",
-      "arEnabled": true
     }
   ]
 }
